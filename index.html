@@ -209,6 +209,26 @@
         .result-correct { color: #2ecc71 !important; font-weight: bold; }
         .result-wrong { color: #e74c3c !important; font-weight: bold; }
         button.danger { background: #e74c3c; color: white; }
+        
+        /* تنسيق معلومات المدرسة */
+        .school-info {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,193,7,0.3);
+            font-size: 0.85rem;
+            color: #ffc107;
+            text-align: center;
+        }
+        .school-info p {
+            margin: 5px 0;
+        }
+        .teacher-name {
+            color: #ff9800;
+            font-weight: bold;
+        }
+        .school-name {
+            color: #2ecc71;
+        }
     </style>
 </head>
 <body>
@@ -220,6 +240,13 @@
         <input type="text" id="studentNameInput" placeholder="مثال: محمد فهد العنزي" autocomplete="off">
         <div id="nameError" class="error-message">⚠️ الاسم يجب أن يكون ثلاثي باللغة العربية فقط</div>
         <button id="startGameBtn">🎮 ابدأ اللعبة</button>
+        
+        <!-- معلومات المعلمة والمدرسة -->
+        <div class="school-info">
+            <p>👩‍🏫 <span class="teacher-name">المعلمة / ابتسام العطوي</span></p>
+            <p>🏫 <span class="school-name">متوسطة الثالثة والثلاثون</span></p>
+        </div>
+        
         <hr style="margin: 15px 0; border-color: #ffc107;">
         <button id="teacherLoginBtn" style="background:#4c6a9e; color: white;">👨‍🏫 دخول المعلم</button>
     </div>
@@ -525,7 +552,7 @@
             const correctAnswer = row[6];
             const result = row[7];
             
-            if (!studentName) return; // تخطي الصفوف الفارغة
+            if (!studentName) return;
             
             if (!studentsMap.has(studentName)) {
                 studentsMap.set(studentName, { name: studentName, solved: 0, wrongAnswers: [] });
